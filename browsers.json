@@ -2,8 +2,16 @@
   "chrome": {
     "stable": [
       {
+        "version": "85.0.4183.121-1",
+        "updated": "2020-09-21"
+      },
+      {
+        "version": "86.0.4240.75-1",
+        "updated": "2020-10-07"
+      },
+      {
         "version": "86.0.4240.111-1",
-        "updated": "2020-10-23"
+        "updated": "2020-10-20"
       }
     ],
     "unstable": [
@@ -16,8 +24,16 @@
   "firefox": {
     "stable": [
       {
+        "version": "81.0.1",
+        "updated": "2020-10-01"
+      },
+      {
+        "version": "81.0.2",
+        "updated": "2020-10-13"
+      },
+      {
         "version": "82.0",
-        "updated": "2020-10-23"
+        "updated": "2020-10-20"
       }
     ],
     "unstable": [
