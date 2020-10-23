@@ -1,0 +1,30 @@
+{
+  "chrome": {
+    "stable": [
+      {
+        "version": "86.0.4240.111-1",
+        "updated": "2020-10-23"
+      }
+    ],
+    "unstable": [
+      {
+        "version": "88.0.4298.4-1",
+        "updated": "2020-10-23"
+      }
+    ]
+  },
+  "firefox": {
+    "stable": [
+      {
+        "version": "82.0",
+        "updated": "2020-10-23"
+      }
+    ],
+    "unstable": [
+      {
+        "version": "83.0b3",
+        "updated": "2020-10-23"
+      }
+    ]
+  }
+}
