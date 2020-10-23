@@ -1,0 +1,23 @@
+name: Update JSON
+on:
+    schedule:
+      - cron:  '5 * * * *' # Run every hour
+
+jobs: 
+  run:
+    name: Update JSON
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Run update bash script
+      run: ./update.sh
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v5
+      with:
+        author_name: Niek
+        author_email: mail@niekvandermaas.nl
+        message: "Updated browser versions"
+        add: "*.jons"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
