@@ -15,10 +15,10 @@ echo "Chrome stable: ${CHROME_STABLE}, unstable: ${CHROME_UNSTABLE}"
 echo "Firefox stable: ${FIREFOX_STABLE}, unstable: ${FIREFOX_UNSTABLE}"
 
 # Update stable versions in JSON
-if [[ -z $(jq '.chrome.stable[] | select (.version=="'${CHROME_STABLE}'")' browsers.json) ]]; then
-  jq '.chrome.stable += [{"version": "'${CHROME_STABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
+if [[ -z $(jq '.chrome.stable[] | select (.version=="'${CHROME_STABLE%%-*}'")' browsers.json) ]]; then
+  jq '.chrome.stable += [{"version": "'${CHROME_STABLE%%-*}'", "filename": "'${CHROME_STABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
   mv browsers.tmp browsers.json
-  echo "Updated stable Chrome version to ${CHROME_STABLE}"
+  echo "Updated stable Chrome version to ${CHROME_STABLE%%-*}"
 fi
 if [[ -z $(jq '.firefox.stable[] | select (.version=="'${FIREFOX_STABLE}'")' browsers.json) ]]; then
   jq '.firefox.stable += [{"version": "'${FIREFOX_STABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
@@ -27,10 +27,10 @@ if [[ -z $(jq '.firefox.stable[] | select (.version=="'${FIREFOX_STABLE}'")' bro
 fi
 
 # Update unstable versions in JSON
-if [[ -z $(jq '.chrome.unstable[] | select (.version=="'${CHROME_UNSTABLE}'")' browsers.json) ]]; then
-  jq '.chrome.unstable += [{"version": "'${CHROME_UNSTABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
+if [[ -z $(jq '.chrome.unstable[] | select (.version=="'${CHROME_UNSTABLE%%-*}'")' browsers.json) ]]; then
+  jq '.chrome.unstable += [{"version": "'${CHROME_UNSTABLE%%-*}'", "filename": "'${CHROME_STABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
   mv browsers.tmp browsers.json
-  echo "Updated unstable Chrome version to ${CHROME_UNSTABLE}"
+  echo "Updated unstable Chrome version to ${CHROME_UNSTABLE%%-*}"
 fi
 if [[ -z $(jq '.firefox.unstable[] | select (.version=="'${FIREFOX_UNSTABLE}'")' browsers.json) ]]; then
   jq '.firefox.unstable += [{"version": "'${FIREFOX_UNSTABLE}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
