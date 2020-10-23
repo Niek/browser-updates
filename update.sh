@@ -16,20 +16,20 @@ echo "Firefox stable: ${FIREFOX_STABLE}, unstable: ${FIREFOX_UNSTABLE}"
 
 # Update stable versions in JSON
 [[ -z $(jq '.chrome.stable[] | select (.version=="'$CHROME_STABLE'")' browsers.json) ]] \
-  && jq '.chrome.stable += [{"version": "'$CHROME_STABLE'", "updated": "'$NOW'"}]' browsers.json >| browsers.tmp \
+  && jq '.chrome.stable += [{"version": "'$CHROME_STABLE'", "updated": "'$NOW'"}]' browsers.json > browsers.tmp \
   && mv browsers.tmp browsers.json \
   && echo "Updated stable Chrome version to ${CHROME_STABLE}"
 [[ -z $(jq '.firefox.stable[] | select (.version=="'$FIREFOX_STABLE'")' browsers.json) ]] \
-  && jq '.firefox.stable += [{"version": "'$FIREFOX_STABLE'", "updated": "'$NOW'"}]' browsers.json >| browsers.tmp \
+  && jq '.firefox.stable += [{"version": "'$FIREFOX_STABLE'", "updated": "'$NOW'"}]' browsers.json > browsers.tmp \
   && mv browsers.tmp browsers.json \
   && echo "Updated stable Firefox version to ${FIREFOX_STABLE}"
 
 # Update unstable versions in JSON
 [[ -z $(jq '.chrome.unstable[] | select (.version=="'$CHROME_UNSTABLE'")' browsers.json) ]] \
-  && jq '.chrome.unstable += [{"version": "'$CHROME_UNSTABLE'", "updated": "'$NOW'"}]' browsers.json >| browsers.tmp \
+  && jq '.chrome.unstable += [{"version": "'$CHROME_UNSTABLE'", "updated": "'$NOW'"}]' browsers.json > browsers.tmp \
   && mv browsers.tmp browsers.json \
   && echo "Updated unstable Chrome version to ${CHROME_UNSTABLE}"
 [[ -z $(jq '.firefox.unstable[] | select (.version=="'$FIREFOX_UNSTABLE'")' browsers.json) ]] \
-  && jq '.firefox.unstable += [{"version": "'$FIREFOX_UNSTABLE'", "updated": "'$NOW'"}]' browsers.json >| browsers.tmp \
+  && jq '.firefox.unstable += [{"version": "'$FIREFOX_UNSTABLE'", "updated": "'$NOW'"}]' browsers.json > browsers.tmp \
   && mv browsers.tmp browsers.json \
   && echo "Updated unstable Firefox version to ${FIREFOX_UNSTABLE}"
