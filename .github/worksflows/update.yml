@@ -1,5 +1,6 @@
 name: Update JSON
 on:
+    push:
     schedule:
       - cron:  '5 * * * *' # Run every hour
 
