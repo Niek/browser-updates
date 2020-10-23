@@ -12,7 +12,9 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Run update bash script
-      run: ./update.sh
+      run: |
+        sudo apt-get -y install jq
+        ./update.sh
     - name: Commit changes
       uses: EndBug/add-and-commit@v5
       with:
