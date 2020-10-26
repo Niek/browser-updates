@@ -19,7 +19,7 @@ for browser in chrome firefox; do
   for rel in stable unstable; do
     VAR=$(echo ${browser}_${rel} | tr '[:lower:]' '[:upper:]')
     if [[ -z $(jq '.'${browser}'.'${rel}'[] | select (.version=="'${!VAR%%-*}'")' browsers.json) ]]; then
-      jq '.chrome.stable += [{"version": "'${!VAR%%-*}'", "filename": "'${!VAR}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
+      jq '.'${browser}'.stable += [{"version": "'${!VAR%%-*}'", "filename": "'${!VAR}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
       mv browsers.tmp browsers.json
       echo "Updated stable ${browser} version to ${!VAR%%-*}"
     fi
