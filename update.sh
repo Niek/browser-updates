@@ -18,8 +18,17 @@ echo "Firefox stable: ${FIREFOX_STABLE}, unstable: ${FIREFOX_UNSTABLE}"
 for browser in chrome firefox; do
   for rel in stable unstable; do
     VAR=$(echo ${browser}_${rel} | tr '[:lower:]' '[:upper:]')
+    # Check if entry does not exist yet
     if [[ -z $(jq '.'${browser}'.'${rel}'[] | select (.version=="'${!VAR%%-*}'")' browsers.json) ]]; then
-      jq '.'${browser}'.'${rel}' += [{"version": "'${!VAR%%-*}'", "filename": "'${!VAR}'", "updated": "'${NOW}'"}]' browsers.json > browsers.tmp
+      # Build JSON entry to add
+      JSON='[{"version": "'${!VAR%%-*}'", '
+      if [[ ${browser} == "chrome" ]]; then
+        JSON+='"filename": "'${!VAR}'", ';
+      fi
+      JSON+='"updated": "'${NOW}'"}]'
+
+      # Add to JSON
+      jq ".${browser}.${rel} += ${JSON}" browsers.json > browsers.tmp
       mv browsers.tmp browsers.json
       echo "Updated stable ${browser} version to ${!VAR%%-*}"
     fi
