@@ -19,6 +19,6 @@ jobs:
         author_name: Niek
         author_email: mail@niekvandermaas.nl
         message: "Updated browser versions"
-        add: "*.jons"
+        add: "*.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
