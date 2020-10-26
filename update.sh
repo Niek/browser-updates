@@ -34,3 +34,7 @@ for browser in chrome firefox; do
     fi
   done
 done
+
+if [ ! -s browsers.json ]; then
+  exit 1
+fi
