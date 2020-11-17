@@ -75,6 +75,10 @@
       {
         "version": "82.0.3",
         "updated": "2020-11-09"
+      },
+      {
+        "version": "83.0",
+        "updated": "2020-11-17"
       }
     ],
     "unstable": [
