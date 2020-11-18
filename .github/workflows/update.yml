@@ -22,9 +22,9 @@ jobs:
         add: "*.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Update another (internal) repo
-      uses: peter-evans/repository-dispatch@v1
+    - name: Invoke workflow in another repo with inputs
+      uses: benc-uk/workflow-dispatch@v1
       with:
+        workflow: ${{ secrets.REPO_EVENT }}
+        repo: ${{ secrets.REPO_NAME }}
         token: ${{ secrets.REPO_TOKEN }}
-        repository: ${{ secrets.REPO_NAME }}
-        event-type: ${{ secrets.REPO_EVENT }}
