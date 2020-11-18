@@ -22,3 +22,9 @@ jobs:
         add: "*.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Update another (internal) repo
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.REPO_TOKEN }}
+        repository: ${{ secrets.REPO_NAME }}
+        event-type: ${{ secrets.REPO_EVENT }}
