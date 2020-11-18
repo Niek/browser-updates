@@ -1,6 +1,6 @@
 # browser-updates
 
-This is an auto-updating repo (using GitHub actions) that contains a [browsers.json](browsers.json) file that lists the latest Chrome and Firefox browser versions of the stable and unstable channels.
+This is an auto-updating repo (using GitHub actions) that contains a [browsers.json](browsers.json) file that lists the latest Chrome, Edge and Firefox browser versions of the stable and unstable channels.
 
 You can set up a cron job to download the latest version of browsers.json with [this link](https://raw.githubusercontent.com/Niek/browser-updates/main/browsers.json).
 
