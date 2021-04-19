@@ -290,6 +290,10 @@
       {
         "version": "87.0",
         "updated": "2021-03-23"
+      },
+      {
+        "version": "88.0",
+        "updated": "2021-04-19"
       }
     ],
     "unstable": [
