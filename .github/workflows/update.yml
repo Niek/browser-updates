@@ -14,7 +14,7 @@ jobs:
     - name: Run update bash script
       run: ./update.sh
     - name: Commit changes
-      uses: EndBug/add-and-commit@v5
+      uses: EndBug/add-and-commit@v7
       with:
         author_name: Niek
         author_email: mail@niekvandermaas.nl
@@ -22,7 +22,7 @@ jobs:
         add: "*.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Invoke workflow in another repo with inputs
+    - name: Invoke workflow in another repo
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: ${{ secrets.REPO_EVENT }}
