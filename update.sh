@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -e # Exit on failure
 
 # Download latest Chrome and Edge releases info from APT repo
-CHROME_RELEASES=$(curl -s "http://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages")
-EDGE_RELEASES=$(curl -s "https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages")
+CHROME_RELEASES=$(curl -sfSL "http://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages")
+EDGE_RELEASES=$(curl -sfSL "https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages")
 
 CHROME_STABLE=$(echo ${CHROME_RELEASES} | grep -o "google-chrome-stable_.*" | cut -d_ -f2)
 CHROME_UNSTABLE=$(echo ${CHROME_RELEASES} | grep -o "google-chrome-unstable_.*" | cut -d_ -f2)
-# Beta / stable is not available yet, see https://www.microsoftedgeinsider.com/en-us/download/?platform=linux
-#EDGE_STABLE=$(echo ${EDGE_RELEASES} | grep -o "microsoft-edge-beta_.*" | cut -d_ -f2)
+# There is no stable Edge for Linux yet, so we take the beta version for now
+EDGE_STABLE=$(echo ${EDGE_RELEASES} | grep -o "microsoft-edge-beta_.*" | cut -d_ -f2)
 EDGE_UNSTABLE=$(echo ${EDGE_RELEASES} | grep -o "microsoft-edge-dev_.*" | cut -d_ -f2)
 FIREFOX_STABLE=$(curl -s "https://download.mozilla.org/?product=firefox-latest" -I | grep -o "releases/.*" | cut -d/ -f2)
 FIREFOX_UNSTABLE=$(curl -s "https://download.mozilla.org/?product=firefox-beta-latest" -I | grep -o "releases/.*" | cut -d/ -f2)
@@ -16,7 +18,7 @@ NOW=$(date +%F)
 
 echo "Latest releases as of ${NOW}:"
 echo "Chrome stable: ${CHROME_STABLE}, unstable: ${CHROME_UNSTABLE}"
-echo "Edge unstable: ${EDGE_UNSTABLE}"
+echo "Edge stable: ${EDGE_STABLE}, unstable: ${EDGE_UNSTABLE}"
 echo "Firefox stable: ${FIREFOX_STABLE}, unstable: ${FIREFOX_UNSTABLE}"
 
 # Update browser versions in JSON
