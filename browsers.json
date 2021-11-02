@@ -606,6 +606,10 @@
       {
         "version": "93.0",
         "updated": "2021-10-05"
+      },
+      {
+        "version": "94.0",
+        "updated": "2021-11-02"
       }
     ],
     "unstable": [
