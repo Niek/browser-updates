@@ -1,5 +1,6 @@
 name: Update JSON
 on:
+    workflow_dispatch: # Manual dispatch
     push:
     schedule:
       - cron:  '5 * * * *' # Run every hour
