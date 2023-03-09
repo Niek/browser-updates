@@ -8,7 +8,6 @@ EDGE_RELEASES=$(curl -sfSL "https://packages.microsoft.com/repos/edge/dists/stab
 
 CHROME_STABLE=$(echo ${CHROME_RELEASES} | grep -o "google-chrome-stable_.*" | cut -d_ -f2)
 CHROME_UNSTABLE=$(echo ${CHROME_RELEASES} | grep -o "google-chrome-unstable_.*" | cut -d_ -f2)
-# There is no stable Edge for Linux yet, so we take the beta version for now
 EDGE_STABLE=$(echo ${EDGE_RELEASES} | grep -o "microsoft-edge-stable_.*" | cut -d_ -f2)
 EDGE_UNSTABLE=$(echo ${EDGE_RELEASES} | grep -o "microsoft-edge-dev_.*" | cut -d_ -f2)
 FIREFOX_STABLE=$(curl -s "https://download.mozilla.org/?product=firefox-latest" -I | grep -o "releases/.*" | cut -d/ -f2)
