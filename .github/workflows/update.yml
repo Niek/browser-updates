@@ -1,5 +1,6 @@
 name: Update JSON
 on:
+    workflow_dispatch: # Manual dispatch
     push:
     schedule:
       - cron:  '5 * * * *' # Run every hour
@@ -23,10 +24,3 @@ jobs:
         add: "*.json"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Invoke workflow in another repo
-      uses: benc-uk/workflow-dispatch@v1
-      if: steps.commit.outputs.pushed == 'true'
-      with:
-        workflow: ${{ secrets.REPO_EVENT }}
-        repo: ${{ secrets.REPO_NAME }}
-        token: ${{ secrets.REPO_TOKEN }}
